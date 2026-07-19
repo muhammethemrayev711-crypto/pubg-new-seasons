@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            background-image: url('pubg_01.png'); /* Burayı her dosyaya göre değiştir: pubg.jpg, pubg-02.png vb. */
+            background-size: cover; color: white; font-family: sans-serif; text-align: center; padding-top: 50px; 
+        }
+        .container { background: rgba(0, 0, 0, 0.85); padding: 20px; border-radius: 20px; display: inline-block; width: 80%; }
+        
+        /* Büyüyüp küçülen buton efekti */
+        .btn-style { 
+            background: #222; border: 2px solid gold; padding: 15px; margin: 10px; 
+            border-radius: 10px; cursor: pointer; display: block; text-decoration: none; color: white;
+            transition: transform 0.3s ease; /* Büyüme/küçülme hızı */
+        }
+        .btn-style:hover { transform: scale(1.05); background: #333; }
+        
+        h1 { font-size: 20px; margin: 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index-00.html" target="_blank" class="btn-style"><h1>TITANIC'in Laneti</h1></a>
+    <a href="index-02.html" target="_blank" class="btn-style"><h1>Проклятие Титаника</h1></a>
+    <a href="index-03.html" target="_blank" class="btn-style"><h1>The Curse of Titanic</h1></a>
+    <a href="index-01.html" target="_blank" class="btn-style" style="border-color: red;"><h1>OPEN ALL</h1></a>
+</div>
+
+</body>
+</html>

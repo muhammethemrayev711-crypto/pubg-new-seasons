@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            background-image: url('pubg.jpg'); 
+            background-size: cover; 
+            color: white; 
+            font-family: sans-serif; 
+            text-align: center; 
+            padding-top: 20px; 
+        }
+        .container { background: rgba(0, 0, 0, 0.85); padding: 20px; border-radius: 20px; display: inline-block; width: 80%; }
+        
+        /* Butonlar icin ortak stil */
+        .btn-effect {
+            transition: transform 0.3s ease; /* Büyüme/küçülme hızı */
+            cursor: pointer;
+        }
+        .btn-effect:hover {
+            transform: scale(1.1); /* Fare üzerine gelince %10 büyür */
+        }
+
+        .season-card { 
+            background: #222; border: 2px solid gold; padding: 10px; margin: 10px; 
+            border-radius: 10px; display: block; text-decoration: none; color: white; 
+        }
+        
+        .bot-btn { 
+            background: #444; border: 1px solid white; padding: 10px; margin: 5px; 
+            border-radius: 5px; display: inline-block; color: gold; 
+        }
+
+        #bot-section { margin-top: 30px; border-top: 2px solid gold; padding-top: 20px; }
+        input { padding: 10px; width: 300px; border-radius: 5px; border: none; }
+        button { padding: 10px; background: gold; border: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index_01.html" target="_blank" class="season-card btn-effect"><h1>The Curse of Titanic season</h1></a>
+    <a href="index_02.html" target="_blank" class="season-card btn-effect"><h1>NARUTO season</h1></a>
+    <a href="index_03.html" target="_blank" class="season-card btn-effect"><h1>LABYRINTH - THE CHOICE OF DESTINY season</h1></a>
+
+    <div id="bot-section">
+        <h2>Designer Assistant & Wikipedia</h2>
+        
+        <div class="bot-btn btn-effect" onclick="ask('ninja')">NARUTO</div>
+        <div class="bot-btn btn-effect" onclick="ask('titanic')">Titanic's Curse</div>
+        <div class="bot-btn btn-effect" onclick="ask('labirent')">Labyrinth</div>
+        <br><br>
+        
+        <input type="text" id="query" placeholder="Ask about anything...">
+        <button onclick="ask()" class="btn-effect">Ask Wikipedia</button>
+        <div id="response" style="margin:20px; color:gold; font-size: 18px;"></div>
+    </div>
+</div>
+
+<script>
+    function ask(topic) {
+        let q = topic || document.getElementById('query').value;
+        fetch('/bot', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({message: q})
+        }).then(r => r.json()).then(data => {
+            document.getElementById('response').innerText = data.reply;
+            let msg = new SpeechSynthesisUtterance(data.reply);
+            msg.lang = 'en-US';
+            msg.rate = 0.7;
+            window.speechSynthesis.speak(msg);
+        });
+    }
+</script>
+
+</body>
+</html>

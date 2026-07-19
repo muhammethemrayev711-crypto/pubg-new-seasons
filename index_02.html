@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            /* Arka plan görselini orijinal dosyanla aynı tuttum */
+            background-image: url('pubg-02.png'); 
+            background-size: cover; color: white; font-family: sans-serif; 
+            text-align: center; padding-top: 50px; 
+        }
+        .container { background: rgba(0, 0, 0, 0.85); padding: 20px; border-radius: 20px; display: inline-block; width: 80%; }
+        
+        /* Buton efekti: Üzerine gelince %5 büyür */
+        .btn-style { 
+            background: #222; border: 2px solid gold; padding: 15px; margin: 10px; 
+            border-radius: 10px; cursor: pointer; display: block; text-decoration: none; color: white;
+            transition: transform 0.3s ease; 
+        }
+        .btn-style:hover { transform: scale(1.05); background: #333; }
+        
+        h1 { font-size: 20px; margin: 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index-05.html" target="_blank" class="btn-style"><h1>Naruto (TR)</h1></a>
+    <a href="index-06.html" target="_blank" class="btn-style"><h1>Наруто (RU)</h1></a>
+    <a href="index-07.html" target="_blank" class="btn-style"><h1>Naruto (EN)</h1></a>
+    <a href="index-04.html" target="_blank" class="btn-style" style="border-color: red;"><h1>OPEN ALL</h1></a>
+</div>
+
+</body>
+</html>
