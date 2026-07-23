@@ -2,34 +2,107 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>ЛАБИРИНТ – ВЫБОР СУДЬБЫ | PUBG Mobile</title>
     <style>
         body { 
             background-image: url('pubg.jpg'); /* Hangi dosyadaysan o dosyanın resim adını yaz */
-            background-size: cover; color: white; font-family: sans-serif; 
-            text-align: center; padding-top: 50px; 
+            background-size: cover; 
+            background-attachment: fixed;
+            color: white; 
+            font-family: sans-serif; 
+            text-align: center; 
+            margin: 0;
+            padding: 50px 20px; 
         }
-        .container { background: rgba(0, 0, 0, 0.85); padding: 30px; border-radius: 20px; display: inline-block; width: 80%; }
-        
-        /* Büyüme/küçülme efekti */
-        .btn-effect { 
-            transition: transform 0.3s ease, background 0.3s; 
-            cursor: pointer; text-decoration: none; display: block; 
-            background: #222; border: 2px solid gold; padding: 15px; margin: 15px; 
-            border-radius: 10px; color: white; font-weight: bold;
+
+        /* Ana kutu: Tam ortada, kenarlardan boşluklu, hafif siyah arka plan ve altın sarısı çerçeve */
+        .container { 
+            background: rgba(0, 0, 0, 0.85); /* Hafif siyah arka plan */
+            border: 3px solid gold;         /* Altın sarısı çerçeve */
+            border-radius: 20px; 
+            display: inline-block; 
+            width: 75%;                     /* Kenarlara tam varmayacak şekilde orta genişlik */
+            max-width: 900px;
+            padding: 40px; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+            text-align: left;               /* Metinlerin rahat okunması için sola dayalı düzen */
         }
-        .btn-effect:hover { transform: scale(1.05); background: #333; }
-        
-        h1 { margin-bottom: 20px; }
-        iframe { border: 2px solid gold; border-radius: 10px; margin-top: 20px; }
+
+        h1 { 
+            text-align: center;
+            color: gold;
+            margin-bottom: 30px; 
+        }
+
+        /* Senaryo metninin düzgün görünmesi ve kaydırılabilmesi için alan */
+        .scenario-content {
+            max-height: 550px;              
+            overflow-y: auto;               /* İçerik uzun olursa şık bir kaydırma çubuğu çıkar */
+            padding-right: 15px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .scenario-content h3 {
+            color: gold;
+            margin-top: 25px;
+        }
+
+        /* Kaydırma çubuğu tasarımı (Tarayıcı uyumlu şık görünüm) */
+        .scenario-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scenario-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .scenario-content::-webkit-scrollbar-thumb {
+            background: gold;
+            border-radius: 10px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #ddd;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            padding-top: 15px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>ЛАБИРИНТ – ВЫБОР СУДЬБЫ</h1>
-    <a href="004.pdf" target="_blank" class="btn-effect">откройте его как широкоэкранный</a>
-    <iframe src="004.pdf" width="80%" height="600px"></iframe>
-    <p>этот сценарий был отправлен в PUBG Mobile 30 мая.</p>
+    
+    <div class="scenario-content">
+        <p><strong>СЦЕНАРИЙ: ЛАБИРИНТ - ВЫБОР СУДЬБЫ (ФИНАЛЬНАЯ ВЕРСИЯ)</strong>[cite: 14]</p>
+        
+        <h3>1. ОТКРЫТИЕ: ВЫЖИВАНИЕ В ЛАБИРИНТЕ</h3>
+        <p>В начале матча пути в центральный лабиринт открыты. Однако «Комната с сундуком» в самом центре заблокирована на 5 минут. В течение этого времени игроки сражаются друг с другом, уклоняясь от движущихся стен и ловушек (маятников, копий), которые меняют свое положение каждую минуту[cite: 14].</p>
+
+        <h3>2. КРИТИЧЕСКИЕ 5 МИНУТ</h3>
+        <p>По истечении 5 минут центральные ворота открываются. Игрок, добравшийся до сундука, получает легендарное оружие (AWM, AMR, Groza и др.) и «Карту лабиринта». Карта позволяет игроку предвидеть следующее перемещение стен (какие пути закроются, а какие откроются)[cite: 14].</p>
+
+        <h3>3. ВЫБОР СУДЬБЫ: ОБЫЧНЫЙ ВЫХОД ИЛИ ПРОКЛЯТЫЙ ПОРТАЛ?</h3>
+        <p>Получив карту, игрок сталкивается с выбором:</p>
+        <ul>
+            <li><strong>А) «Без риска»:</strong> Использовать карту для предсказания движений стен, дойти до одного из 7 выходов и тихо покинуть лабиринт[cite: 14].</li>
+            <li><strong>Б) «Проклятый портал»:</strong> Если игрок понимает, что не справится с ловушками, он может войти в Проклятый портал рядом с сундуком[cite: 14].</li>
+        </ul>
+
+        <h3>4. ЦЕНА ПРОКЛЯТИЯ</h3>
+        <p>Игрок, покинувший лабиринт через Проклятый портал, мгновенно телепортируется в случайную точку карты. Но за этот «легкий выход» нужно платить: игрок становится Проклятым[cite: 14].<br>
+        <strong>Эффект проклятия:</strong> Пока игрок лутается или передвигается по Эрангелю, внезапно может разверзнуться земля, вырасти стены или вылететь копья. Проклятие преследует игрока до тех пор, пока он либо не будет устранен, либо не одержит победу (Win)[cite: 14].</p>
+
+        <h3>5. РЕШЕНИЕ ОБ ОЧИЩЕНИИ (ОПЦИОНАЛЬНО)</h3>
+        <p>Если обладатель карты решает остаться и заявляет: «Я не уйду через портал, я зачищу весь лабиринт», звучат сирены, и все ловушки лабиринта нацеливаются на него. Это настоящий «Выбор судьбы»: либо выжить и пройти испытание до конца, либо погибнуть внутри лабиринта[cite: 14].</p>
+    </div>
+
+    <div class="footer-note">
+        этот сценарий был отправлен в PUBG Mobile 30 мая.[cite: 13]
+    </div>
 </div>
 
 </body>
