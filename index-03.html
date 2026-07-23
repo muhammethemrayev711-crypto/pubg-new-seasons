@@ -2,34 +2,151 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>The Curse of Titanic | PUBG Mobile</title>
     <style>
         body { 
             background-image: url('pubg-00.png'); /* Hangi dosyadaysan o dosyanın resim adını yaz */
-            background-size: cover; color: white; font-family: sans-serif; 
-            text-align: center; padding-top: 50px; 
+            background-size: cover; 
+            background-attachment: fixed;
+            color: white; 
+            font-family: sans-serif; 
+            text-align: center; 
+            margin: 0;
+            padding: 50px 20px; 
         }
-        .container { background: rgba(0, 0, 0, 0.85); padding: 30px; border-radius: 20px; display: inline-block; width: 80%; }
-        
-        /* Büyüme/küçülme efekti */
-        .btn-effect { 
-            transition: transform 0.3s ease, background 0.3s; 
-            cursor: pointer; text-decoration: none; display: block; 
-            background: #222; border: 2px solid gold; padding: 15px; margin: 15px; 
-            border-radius: 10px; color: white; font-weight: bold;
+
+        /* Ana kutu: Tam ortada, kenarlardan boşluklu, hafif siyah arka plan ve altın sarısı çerçeve */
+        .container { 
+            background: rgba(0, 0, 0, 0.85); /* Hafif siyah arka plan */
+            border: 3px solid gold;         /* Altın sarısı çerçeve */
+            border-radius: 20px; 
+            display: inline-block; 
+            width: 75%;                     /* Kenarlara tam varmayacak şekilde orta genişlik */
+            max-width: 900px;
+            padding: 40px; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+            text-align: left;               /* Metinlerin rahat okunması için sola dayalı düzen */
         }
-        .btn-effect:hover { transform: scale(1.05); background: #333; }
-        
-        h1 { margin-bottom: 20px; }
-        iframe { border: 2px solid gold; border-radius: 10px; margin-top: 20px; }
+
+        h1 { 
+            text-align: center;
+            color: gold;
+            margin-bottom: 30px; 
+        }
+
+        /* Senaryo metninin düzgün görünmesi ve kaydırılabilmesi için alan */
+        .scenario-content {
+            max-height: 550px;              
+            overflow-y: auto;               /* İçerik uzun olursa şık bir kaydırma çubuğu çıkar */
+            padding-right: 15px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .scenario-content h3 {
+            color: gold;
+            margin-top: 25px;
+        }
+
+        /* Kaydırma çubuğu tasarımı (Tarayıcı uyumlu şık görünüm) */
+        .scenario-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scenario-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .scenario-content::-webkit-scrollbar-thumb {
+            background: gold;
+            border-radius: 10px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #ddd;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            padding-top: 15px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>The Curse of Titanic</h1>
-    <a href="321.pdf" target="_blank" class="btn-effect">open it as a widescreen</a>
-    <iframe src="321.pdf" width="80%" height="600px"></iframe>
-    <p>This scenario was submitted to PUBG Mobile on May 25th.</p>
+    
+    <div class="scenario-content">
+        <p><strong>Presenting the in-game scenario for PUBG Mobile: The Curse of the Titanic Season, complete with all its mechanics:</strong>[cite: 6]</p>
+        
+        <h3>CHAPTER 1: Lobby Preparation and the Ultimate Goal</h3>
+        <p>The players are on the lobby screen. In the event tab, a massive, glowing "Heart of the Ocean" necklace is displayed, with a sleek vehicle skin crashing through ice blocks in the background. The mission is clear: survive this mode, secure the necklace, win the match, and collect 50 necklaces to unlock that rare vehicle skin! The squad hits "Ready" and gears up for the Erangel map[cite: 6].</p>
+
+        <h3>CHAPTER 2: The Flight Path and the Moving Titan</h3>
+        <p>As the plane ascends into the skies of Erangel, players open their maps. Deviating from the usual Erangel layout, a massive ship icon is seen moving along the edge of the sea: The Titanic[cite: 6].</p>
+        <ul>
+            <li>In this match, the ship has entered the water just off the coast of northern Stalber and is heading west (this route randomizes completely with every match)[cite: 6].</li>
+            <li>The Blue Zone (Safe Zone) centers around the middle of the map, near Rozhok and Pochinki. This means the Titanic is completely outside the safe play area[cite: 6].</li>
+            <li>Taking the ultimate high-risk, high-reward gamble, the squad decides to drop straight from the plane onto the massive deck of the moving Titanic[cite: 6].</li>
+        </ul>
+
+        <h3>CHAPTER 3: Chaotic Looting and the Collision (Shipborne Combat)</h3>
+        <p>The moment their boots hit the deck, absolute chaos erupts. Our squad isn't alone; 5 to 6 other teams hungry for high-tier loot have dropped onto the ship with them[cite: 6].</p>
+        <ul>
+            <li><strong>A Race Against Time:</strong> As the ship surges forward, a brutal firefight breaks out in the luxury salons and narrow corridors. Gunfire drowns out the sound of the ocean[cite: 6].</li>
+            <li><strong>Iceberg Alert:</strong> At the 4-minute mark of the match, a violent tremor rocks the entire ship. Sirens wail through the comms: The ship has struck an iceberg and is beginning to sink[cite: 6]!</li>
+            <li><strong>Looting a Sinking Ship:</strong> Water slowly floods the lower decks, and the Titanic begins to tilt. Characters struggle to keep their balance as the screen shakes. Yet, the players don't stop; those who can stay on their feet on the tilting deck are busy looting high-tier weapons from newly exposed secret compartments[cite: 6].</li>
+            <li><strong>The Heart of the Ocean:</strong> Our squad reaches the captain's bridge. They blow open the hidden safe, and inside, they find the shimmering Heart of the Ocean necklace—the only one available in the entire match. A teammate slips it into their backpack. No visual glow appears over the player, and no icon shows up on the map; the loot remains completely hidden. An instantaneous, tense silence falls over the teammates... Will anyone betray the other? They know that to win the match, they must stick together[cite: 6].</li>
+        </ul>
+
+        <h3>CHAPTER 4: The Grand Evacuation and the Freezing Sea</h3>
+        <p>The ship is now rapidly sinking into the depths. Alongside a few surviving enemy teams, our squad lunges off the deck[cite: 6].</p>
+        <ul>
+            <li><strong>The Tragedy of the Lifeboats:</strong> There are only 4 to 6 lifeboats on the ship. Our squad rushes to the davits to launch one, but the ship is sinking too fast—the mechanism jams! Before they can lower it into the water, the Titanic plunges into the ocean depth with a deafening roar[cite: 6].</li>
+            <li><strong>The Ship's Demise (Whirlpool and Death):</strong> As the Titanic goes fully under, it leaves a massive whirlpool in its wake. Players who failed to jump in time or got trapped inside drown instantly and are eliminated. Within seconds, the ship slams into the seabed and is completely destroyed[cite: 6].</li>
+            <li><strong>Ejected Crates and Heaters:</strong> Following the ship's plunge, 5 to 6 emergency supply crates eject and pop up to the water's surface. Our squad immediately swims over and pops one open. Inside, they find Life Jackets and Heaters (Thermal Kits)[cite: 6].</li>
+            <li><strong>Cold and Zone Damage:</strong> Because the Titanic sank outside the safe zone, the Blue Zone starts ticking away, and the water is sub-zero. Players without a heater or life jacket freeze, slow down, and sink into the water one by one. Thanks to the thermal kits grabbed from the crate, our squad maintains their movement speed and swims onward[cite: 6].</li>
+        </ul>
+
+        <h3>CHAPTER 5: Rescue Ships (Heading for the Safe Zone)</h3>
+        <p>In the middle of the freezing sea, a distant ship horn echoes. Having received the Titanic's SOS distress signal, an AI-controlled, Unarmed Rescue Ship drops anchor slightly away from the sinking site[cite: 6].<br>
+        Our squad swims over and climbs aboard the rescue vessel. On the deck, another wounded team that managed to escape the freezing water is already waiting. A ruthless close-quarters combat (CQC) battle erupts inside the ship, and our squad successfully wipes them out[cite: 6].<br>
+        With its wounded passengers on board, the rescue ship automatically starts steaming at full speed toward the Erangel Port, located safely inside the play zone[cite: 6].</p>
+
+        <h3>CHAPTER 6: The Port Ambush and "The Infiltration"</h3>
+        <p>As the rescue ship nears the docks, the situation on the mainland is far more savage. Every squad remaining on Erangel knows the port will always stay inside the safe zone and that the ultimate prize is arriving there, turning the harbor into an absolute warzone[cite: 6].</p>
+        <ul>
+            <li><strong>The Hunters' War:</strong> Three different teams are already locked in a fierce firefight at the docks. Our unarmed rescue ship barrels right into the middle of this hail of bullets, grinding to a halt and locking itself in place at the pier with a massive thud[cite: 6].</li>
+            <li><strong>Chaos and Opportunity:</strong> While the land teams tear each other apart for control of the port, our squad waits inside the ship for the perfect moment. They have a chance to exploit the chaos and slip away from the docks undetected. However, they have the Heart of the Ocean in their backpack, and instead of running, they want to end this war right here[cite: 6]!</li>
+            <li><strong>Storming the Ship:</strong> Knowing that the passengers on the rescue ship are carrying the ultimate Titanic loot, one of the ambushing teams on the docks begins to infiltrate the ship's corridors. A grueling, room-to-room, staircase-to-staircase battle for survival ensues down to the very last bullet. Playing it smart, our squad eliminates the boarders and waits for the remaining teams on the docks to finish each other off[cite: 6].</li>
+        </ul>
+
+        <h3>CHAPTER 7: The Ultimate Win and Reward Night in the Lobby</h3>
+        <p>Surviving the port carnage, our squad sweeps the remaining enemies as the play zone shrinks to its final stage. The glorious text flashes across the screen: <em>"Winner Winner Chicken Dinner!"</em>[cite: 6]</p>
+        <ul>
+            <li><strong>Fair Distribution:</strong> Once the match concludes, the system verifies the conditions: The Heart of the Ocean necklace was successfully brought ashore by this squad, and the match was won[cite: 6].</li>
+            <li><strong>Lobby Celebration:</strong> When the players return to the lobby, there is no toxicity or fighting over who kept the loot. Even though only one person carried the necklace during the match, the system automatically rewards every surviving member of the winning squad with one permanent "Heart of the Ocean" necklace in their inventory[cite: 6]!</li>
+        </ul>
+        <p>With pride, our squad polishes their necklaces in the lobby, one step closer to unlocking that legendary vehicle skin, and hits "Ready" for the next match[cite: 6]!</p>
+
+        <p><strong>Final Note:</strong> And there it is! A complete, second-by-second scenario that races against time, freezes the players, drops them into deadly ambushes, and rewards them massively at the end! PUBG Mobile better take notes, because this concept is an absolute masterpiece that would keep players glued to their phones[cite: 6]!</p>
+
+        <p><em>"We designed this scenario together with Gemini, and it would be amazing if you could bring this as a new season! I had actually shared this idea with you the other day as well, but this one is much more detailed. Please bring this in as a new season. Also, I would be very glad if you could pass on my greetings to ROHAN, aka Kemal Abi. Thank you for your trouble!"</em>[cite: 6]</p>
+
+        <h3>SPECIAL MISSION: "TITANIC: VOYAGE OF DESTINY"</h3>
+        <ul>
+            <li><strong>Activation:</strong> Once a player collects 10 "Hearts of the Ocean" from the map, they can redeem a "Destiny Card" from the Season Shop. Activating this card transforms the next classic Erangel match into a unique "Voyage of Destiny" quest[cite: 6].</li>
+            <li><strong>The Mission:</strong> During the match, the squad must find the Titanic as it sinks. Three players must enter a "Deep Sleep" (The Dream), while the fourth player acts as the "Guardian"[cite: 6].</li>
+            <li><strong>The Guardian's Role:</strong> The Guardian must protect the ship and activate the "Awaken" switch at the exact moment the Titanic hits the seabed[cite: 6].</li>
+            <li><strong>Success:</strong> If the Guardian succeeds, the squad instantly completes the quest, earning an exclusive Legendary Title, a unique weapon skin, and a special vehicle skin[cite: 6].</li>
+            <li><strong>Failure:</strong> If the Guardian fails or the squad wakes up prematurely, the quest ends, but the match continues as a standard Battle Royale game[cite: 6].</li>
+            <li><strong>Game Balance:</strong> This is a one-time special quest triggered by the player's choice, ensuring that it enhances the experience without disrupting the core competitive gameplay of the classic Erangel mode[cite: 6].</li>
+        </ul>
+    </div>
+
+    <div class="footer-note">
+        This scenario was submitted to PUBG Mobile on May 25th.
+    </div>
 </div>
 
 </body>
