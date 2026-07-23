@@ -2,11 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PUBG New Seasons | insanların hayali sezonları</title>
-
-    <meta name="description" content="sizlerde bu sitedeki gibi sezon hayal edin ve detaylı bi şekilde senaryolaştırın ve sonrasında bana gmail üzerinden gönderin muhammethemrayev711@gmail.com bekliyorum">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG Mobile New Season Concepts | Muhammet Hemrayev</title>
     <style>
         body { 
             background-image: url('pubg.jpg'); 
@@ -18,13 +14,12 @@
         }
         .container { background: rgba(0, 0, 0, 0.85); padding: 20px; border-radius: 20px; display: inline-block; width: 80%; }
         
-        /* Butonlar icin ortak stil */
         .btn-effect {
-            transition: transform 0.3s ease; /* Büyüme/küçülme hızı */
+            transition: transform 0.3s ease; 
             cursor: pointer;
         }
         .btn-effect:hover {
-            transform: scale(1.1); /* Fare üzerine gelince %10 büyür */
+            transform: scale(1.1); 
         }
 
         .season-card { 
@@ -38,45 +33,104 @@
         }
 
         #bot-section { margin-top: 30px; border-top: 2px solid gold; padding-top: 20px; }
-        input { padding: 10px; width: 300px; border-radius: 5px; border: none; }
-        button { padding: 10px; background: gold; border: none; font-weight: bold; }
+        #mail-section { margin-top: 30px; border-top: 2px solid gold; padding-top: 20px; }
+        
+        input, textarea { padding: 10px; width: 300px; border-radius: 5px; border: none; margin: 5px; }
+        button { padding: 10px; background: gold; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <a href="index_01.html" target="_blank" class="season-card btn-effect"><h1>The Curse of Titanic season</h1></a>
-    <a href="index_02.html" target="_blank" class="season-card btn-effect"><h1>NARUTO season</h1></a>
-    <a href="index_03.html" target="_blank" class="season-card btn-effect"><h1>LABYRINTH - THE CHOICE OF DESTINY season</h1></a>
+    <a href="index_01.html" target="_blank" class="season-card btn-effect"><h1>The Curse of Titanic Season</h1></a>
+    <a href="index_02.html" target="_blank" class="season-card btn-effect"><h1>NARUTO Season</h1></a>
+    <a href="index_03.html" target="_blank" class="season-card btn-effect"><h1>LABYRINTH - THE CHOICE OF DESTINY Season</h1></a>
 
+    <!-- Custom Assistant Section -->
     <div id="bot-section">
-        <h2>Designer Assistant & Wikipedia</h2>
+        <h2>Designer Assistant</h2>
         
-        <div class="bot-btn btn-effect" onclick="ask('ninja')">NARUTO</div>
-        <div class="bot-btn btn-effect" onclick="ask('titanic')">Titanic's Curse</div>
-        <div class="bot-btn btn-effect" onclick="ask('labirent')">Labyrinth</div>
+        <!-- Buradaki tırnak içine kendi istediğin özel metinleri yazabilirsin -->
+        <div class="bot-btn btn-effect" onclick="showCustomText('Naruto season features ninja abilities, custom weapons, and hidden leaf village themes!')">NARUTO</div>
+        <div class="bot-btn btn-effect" onclick="showCustomText('Titanic curse brings icy zones, ghost ships, and survival mechanics to the map.')">Titanic's Curse</div>
+        <div class="bot-btn btn-effect" onclick="showCustomText('Labyrinth challenges players with a central locked vault and complex maze paths.')">Labyrinth</div>
         <br><br>
         
-        <input type="text" id="query" placeholder="Ask about anything...">
-        <button onclick="ask()" class="btn-effect">Ask Wikipedia</button>
+        <!-- Wikipedia arama alanı yine aşağıda bağımsız olarak çalışmaya devam ediyor -->
+        <input type="text" id="query" placeholder="Ask Wikipedia about anything...">
+        <button onclick="askWikipedia()" class="btn-effect">Ask Wikipedia</button>
         <div id="response" style="margin:20px; color:gold; font-size: 18px;"></div>
+    </div>
+
+    <!-- Contact Form via Mailto -->
+    <div id="mail-section">
+        <h2>Send Me a Message</h2>
+        <form onsubmit="sendMail(event)">
+            <input type="text" id="senderName" placeholder="Your Name" required><br>
+            <input type="email" id="senderEmail" placeholder="Your Email Address" required><br>
+            <textarea id="senderMessage" placeholder="Your Message..." rows="3" required style="width: 300px; padding: 10px; border-radius: 5px; border: none;"></textarea><br>
+            <button type="submit" class="btn-effect">Send Message</button>
+        </form>
     </div>
 </div>
 
 <script>
-    function ask(topic) {
-        let q = topic || document.getElementById('query').value;
-        fetch('/bot', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({message: q})
-        }).then(r => r.json()).then(data => {
-            document.getElementById('response').innerText = data.reply;
-            let msg = new SpeechSynthesisUtterance(data.reply);
-            msg.lang = 'en-US';
-            msg.rate = 0.7;
-            window.speechSynthesis.speak(msg);
-        });
+    // Küçük butonlar için kendi yazdığın metni gösteren ve seslendiren fonksiyon
+    function showCustomText(text) {
+        document.getElementById('response').innerText = text;
+
+        let msg = new SpeechSynthesisUtterance(text);
+        msg.lang = 'en-US';
+        msg.rate = 0.9;
+        window.speechSynthesis.speak(msg);
+    }
+
+    // Aşağıdaki büyük arkutusu için Wikipedia araması
+    function askWikipedia() {
+        let q = document.getElementById('query').value;
+        if (!q) {
+            document.getElementById('response').innerText = "Please type something to search!";
+            return;
+        }
+
+        document.getElementById('response').innerText = "Searching...";
+
+        let url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q)}&format=json&origin=*`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let results = data.query.search;
+                if (results.length > 0) {
+                    let rawSnippet = results[0].snippet;
+                    let cleanSnippet = rawSnippet.replace(/(<([^>]+)>)/gi, ""); 
+                    let replyText = results[0].title + ": " + cleanSnippet + "...";
+                    
+                    document.getElementById('response').innerText = replyText;
+
+                    let msg = new SpeechSynthesisUtterance(replyText);
+                    msg.lang = 'en-US';
+                    msg.rate = 0.9;
+                    window.speechSynthesis.speak(msg);
+                } else {
+                    document.getElementById('response').innerText = "No results found on Wikipedia.";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById('response').innerText = "Connection error occurred.";
+            });
+    }
+
+    function sendMail(event) {
+        event.preventDefault();
+        let name = document.getElementById('senderName').value;
+        let email = document.getElementById('senderEmail').value;
+        let message = document.getElementById('senderMessage').value;
+
+        let mailtoLink = `mailto:muhammethemrayev711@gmail.com?subject=New Message from ${encodeURIComponent(name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+        
+        window.location.href = mailtoLink;
     }
 </script>
 
