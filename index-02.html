@@ -2,34 +2,129 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>Проклятие Титаника | PUBG Mobile</title>
     <style>
         body { 
             background-image: url('pubg.jpg'); /* Hangi dosyadaysan o dosyanın resim adını yaz */
-            background-size: cover; color: white; font-family: sans-serif; 
-            text-align: center; padding-top: 50px; 
+            background-size: cover; 
+            background-attachment: fixed;
+            color: white; 
+            font-family: sans-serif; 
+            text-align: center; 
+            margin: 0;
+            padding: 50px 20px; 
         }
-        .container { background: rgba(0, 0, 0, 0.85); padding: 30px; border-radius: 20px; display: inline-block; width: 80%; }
-        
-        /* Büyüme/küçülme efekti */
-        .btn-effect { 
-            transition: transform 0.3s ease, background 0.3s; 
-            cursor: pointer; text-decoration: none; display: block; 
-            background: #222; border: 2px solid gold; padding: 15px; margin: 15px; 
-            border-radius: 10px; color: white; font-weight: bold;
+
+        /* Ana kutu: Tam ortada, kenarlardan boşluklu, hafif siyah arka plan ve altın sarısı çerçeve */
+        .container { 
+            background: rgba(0, 0, 0, 0.85); /* Hafif siyah arka plan */
+            border: 3px solid gold;         /* Altın sarısı çerçeve */
+            border-radius: 20px; 
+            display: inline-block; 
+            width: 75%;                     /* Kenarlara tam varmayacak şekilde orta genişlik */
+            max-width: 900px;
+            padding: 40px; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+            text-align: left;               /* Metinlerin rahat okunması için sola dayalı düzen */
         }
-        .btn-effect:hover { transform: scale(1.05); background: #333; }
-        
-        h1 { margin-bottom: 20px; }
-        iframe { border: 2px solid gold; border-radius: 10px; margin-top: 20px; }
+
+        h1 { 
+            text-align: center;
+            color: gold;
+            margin-bottom: 30px; 
+        }
+
+        /* Senaryo metninin düzgün görünmesi ve kaydırılabilmesi için alan */
+        .scenario-content {
+            max-height: 550px;              
+            overflow-y: auto;               /* İçerik uzun olursa şık bir kaydırma çubuğu çıkar */
+            padding-right: 15px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .scenario-content h3 {
+            color: gold;
+            margin-top: 25px;
+        }
+
+        /* Kaydırma çubuğu tasarımı (Tarayıcı uyumlu şık görünüm) */
+        .scenario-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scenario-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .scenario-content::-webkit-scrollbar-thumb {
+            background: gold;
+            border-radius: 10px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #ddd;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            padding-top: 15px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Проклятие Титаника</h1>
-    <a href="213.pdf" target="_blank" class="btn-effect">откройте его как широкоэкранный</a>
-    <iframe src="213.pdf" width="80%" height="600px"></iframe>
-    <p>этот сценарий был отправлен в PUBG Mobile 25 мая.</p>
+    
+    <div class="scenario-content">
+        <p><strong>PUBG Mobile: "Проклятие Титаника" (Titanic's Curse)</strong></p>
+        
+        <h3>ЧАСТЬ 1: Подготовка в лобби и великая цель</h3>
+        <p>Игроки находятся в лобби. Во вкладке события сверкает гигантское ожерелье «Сердце океана», а на фоне — концепт-арт автомобиля, врезающегося в ледяные глыбы. Задача ясна: выжить в этом режиме, захватить ожерелье, победить в матче и собрать 50 ожерелий, чтобы разблокировать редкий скин на автомобиль! Команда нажимает «Готов» и отправляется на Эрангель.</p>
+
+        <h3>ЧАСТЬ 2: Маршрут самолета и движущийся гигант</h3>
+        <p>Самолет пролетает над Эрангелем, игроки открывают карту. В отличие от привычного Эрангеля, на границе моря движется иконка огромного корабля: «Титаник». Корабль входит в воду в северной части у залива «Karkas» и движется на запад (маршрут меняется случайно в каждом матче). Синяя зона (безопасная зона) расположена в центре карты, вокруг «Rozhok» и «Pochinki». Это значит, что «Титаник» находится полностью вне зоны игры. Команда решает рискнуть и прыгнуть прямо на палубу движущегося «Титаника».</p>
+
+        <h3>ЧАСТЬ 3: Хаотичный лут и столкновение (Битва на корабле)</h3>
+        <p>Как только игроки ступают на палубу, начинается хаос. Еще 5-6 команд также решили попытать удачу.</p>
+        <ul>
+            <li><strong>Гонка со временем:</strong> Корабль движется, в коридорах и роскошных залах начинается ожесточенная перестрелка.</li>
+            <li><strong>Тревога «Айсберг»:</strong> На 4-й минуте матча происходит мощный толчок. Из динамиков звучит сирена: корабль столкнулся с айсбергом и начинает тонуть!</li>
+            <li><strong>Лут во время затопления:</strong> Корабль кренится, персонажи с трудом держатся на ногах, экран трясется. Игроки продолжают сражаться, ведь на наклонной палубе открываются скрытые отсеки с высокоуровневым лутом.</li>
+            <li><strong>Сердце океана:</strong> Команда добирается до капитанского мостика. Они взрывают сейф и находят единственное на весь матч ожерелье «Сердце океана». Оно не отображается на карте, это полностью скрытый лут.</li>
+        </ul>
+
+        <h3>ЧАСТЬ 4: Великая эвакуация и ледяное море</h3>
+        <p>Корабль быстро уходит под воду. Игроки прыгают на палубу[cite: 4].</p>
+        <ul>
+            <li><strong>Трагедия шлюпок:</strong> Механизм спуска шлюпок заклинило! «Титаник» с грохотом уходит на дно[cite: 4].</li>
+            <li><strong>Финал корабля:</strong> Образуется гигантская воронка. Те, кто не успел покинуть корабль, погибают[cite: 4].</li>
+            <li><strong>Ящики и обогреватели:</strong> При затоплении на поверхность всплывают аварийные ящики. Команда открывает один из них и находит спасательные жилеты и обогреватели (Thermal Kits). Благодаря им команда не замерзает в ледяной воде и не погибает от урона зоны[cite: 4].</li>
+        </ul>
+
+        <h3>ЧАСТЬ 5: Спасательные суда</h3>
+        <p>Посреди ледяного моря слышен гудок. ИИ-управляемый «Спасательный корабль» прибывает к месту крушения. Команда доплывает до него, захватывает судно, устраняет другую команду раненых выживших и направляется в порт Эрангеля[cite: 4].</p>
+
+        <h3>ЧАСТЬ 6: Засада в порту и инфильтрация</h3>
+        <p>Порт - это зона активных боевых действий. Команды сражаются за контроль. Наше судно врезается в порт. Команда решает не бежать, а использовать «Сердце океана» как приманку, чтобы уничтожить противников, пытающихся взять корабль на абордаж[cite: 4].</p>
+
+        <h3>ЧАСТЬ 7: Победа и награды</h3>
+        <p>Команда побеждает в финальных сражениях и занимает первое место[cite: 4].</p>
+        <ul>
+            <li><strong>Награда:</strong> Каждый выживший член команды получает в лобби постоянное ожерелье «Сердце океана». Команда на шаг ближе к получению скина на автомобиль![cite: 4]</li>
+        </ul>
+
+        <h3>«ТИТАНИК: ПУТЕШЕСТВИЕ СУДЬБЫ» (Особая механика)</h3>
+        <p>Игрок покупает «Карту Судьбы» за 10 ожерелий. Использование карты активирует этот режим[cite: 4].</p>
+        <ul>
+            <li><strong>Сон и пробуждение:</strong> При затоплении команда погружается в «Глубокий сон»[cite: 4].</li>
+            <li><strong>Стратегия Хранителя:</strong> 4-й игрок (Хранитель) должен разбудить троих товарищей, пока корабль тонет. Если он успевает — награда (титул, оружие, скин) начисляется автоматически. Если нет — награда теряется, но матч продолжается как обычный классический режим[cite: 4].</li>
+        </ul>
+    </div>
+
+    <div class="footer-note">
+        этот сценарий был отправлен в PUBG Mobile 25 мая.
+    </div>
 </div>
 
 </body>
