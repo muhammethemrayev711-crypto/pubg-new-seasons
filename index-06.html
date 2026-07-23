@@ -2,34 +2,126 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>Наруто | PUBG Mobile</title>
     <style>
         body { 
             background-image: url('pubg-02.png'); /* Hangi dosyadaysan o dosyanın resim adını yaz */
-            background-size: cover; color: white; font-family: sans-serif; 
-            text-align: center; padding-top: 50px; 
+            background-size: cover; 
+            background-attachment: fixed;
+            color: white; 
+            font-family: sans-serif; 
+            text-align: center; 
+            margin: 0;
+            padding: 50px 20px; 
         }
-        .container { background: rgba(0, 0, 0, 0.85); padding: 30px; border-radius: 20px; display: inline-block; width: 80%; }
-        
-        /* Büyüme/küçülme efekti */
-        .btn-effect { 
-            transition: transform 0.3s ease, background 0.3s; 
-            cursor: pointer; text-decoration: none; display: block; 
-            background: #222; border: 2px solid gold; padding: 15px; margin: 15px; 
-            border-radius: 10px; color: white; font-weight: bold;
+
+        /* Ana kutu: Tam ortada, kenarlardan boşluklu, hafif siyah arka plan ve altın sarısı çerçeve */
+        .container { 
+            background: rgba(0, 0, 0, 0.85); /* Hafif siyah arka plan */
+            border: 3px solid gold;         /* Altın sarısı çerçeve */
+            border-radius: 20px; 
+            display: inline-block; 
+            width: 75%;                     /* Kenarlara tam varmayacak şekilde orta genişlik */
+            max-width: 900px;
+            padding: 40px; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+            text-align: left;               /* Metinlerin rahat okunması için sola dayalı düzen */
         }
-        .btn-effect:hover { transform: scale(1.05); background: #333; }
-        
-        h1 { margin-bottom: 20px; }
-        iframe { border: 2px solid gold; border-radius: 10px; margin-top: 20px; }
+
+        h1 { 
+            text-align: center;
+            color: gold;
+            margin-bottom: 30px; 
+        }
+
+        /* Senaryo metninin düzgün görünmesi ve kaydırılabilmesi için alan */
+        .scenario-content {
+            max-height: 550px;              
+            overflow-y: auto;               /* İçerik uzun olursa şık bir kaydırma çubuğu çıkar */
+            padding-right: 15px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .scenario-content h3 {
+            color: gold;
+            margin-top: 25px;
+        }
+
+        /* Kaydırma çubuğu tasarımı (Tarayıcı uyumlu şık görünüm) */
+        .scenario-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scenario-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .scenario-content::-webkit-scrollbar-thumb {
+            background: gold;
+            border-radius: 10px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #ddd;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            padding-top: 15px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Наруто</h1>
-    <a href="001.pdf" target="_blank" class="btn-effect">откройте его как широкоэкранный</a>
-    <iframe src="001.pdf" width="80%" height="600px"></iframe>
-    <p>этот сценарий был отправлен в PUBG Mobile 26 мая.</p>
+    
+    <div class="scenario-content">
+        <p><strong>СЦЕНАРИЙ СЕЗОНА: БИТВА НИНДЗЯ (ОГОНЬ И ПЕСОК)</strong>[cite: 10]</p>
+        
+        <h3>1. ВВЕДЕНИЕ И АТМОСФЕРА</h3>
+        <p>Карта Эрангель разделена на две части загадочным природным явлением. Одна половина карты окутана золотисто-оранжевым рассветом, где возвышается Деревня Огня, а другая погружается в багровые сумерки, где властвуют песчаные бури и возникает Деревня Песка[cite: 10].</p>
+        <p><strong>Экран лобби:</strong> В центре в небо устремлен гигантский энергетический столп. Справа постоянно рычит Курама (Девятихвостый) Наруто, а слева — Шукаку Гаары. Игроки стоят в нейтральной зоне между этими двумя титанами, одетые в снаряжение выбранной ими деревни[cite: 10].</p>
+
+        <h3>2. ВЫБОР И СТРУКТУРА ОТРЯДА</h3>
+        <ul>
+            <li><strong>Лояльность деревне:</strong> В начале сезона игроки выбирают Деревню Огня или Деревню Песка. Отряды могут состоять только из членов одной деревни[cite: 10].</li>
+            <li><strong>Выбор судьбы:</strong> В начале матча система случайным образом выбирает одного игрока из каждого отряда, который становится «Джинчурики» (Сосудом). Над этим игроком появляется силуэт Наруто или Гаары[cite: 10].</li>
+        </ul>
+
+        <h3>3. ИГРОВЫЕ МЕХАНИКИ</h3>
+        <p><strong>Трансформация:</strong> Как только «Джинчурики» достигает локации «Печати Чакры» на карте, он превращается в свою огромную форму зверя[cite: 10].</p>
+        <p><strong>Специальные способности:</strong></p>
+        <ul>
+            <li><strong>Огонь (Наруто):</strong> Использует Теневых клонов, чтобы запутать врагов, и Расенган, чтобы уничтожить транспорт одним ударом[cite: 10].</li>
+            <li><strong>Песок (Гаара):</strong> Использует Песчаный щит для поглощения входящих пуль и Око Песка, чтобы видеть врагов внутри зданий (эффект рентгена)[cite: 10].</li>
+        </ul>
+        <p><strong>Эффект столкновения:</strong> При столкновении Расенгана и Песчаной стены происходит мощный «Энергетический взрыв» в широком радиусе; у обеих сторон ломается броня и снижается здоровье. Это добавляет элемент тактического управления рисками[cite: 10].</p>
+
+        <h3>4. ЛУТ И ЭКОНОМИКА (СИСТЕМА ЧАКРЫ)</h3>
+        <p><strong>Кристаллы Чакры:</strong> Лидеры (Наруто или Гаара) побеждающего отряда собирают в качестве лута «Желтую Чакру» (Огонь) или «Красную Чакру» (Песок)[cite: 10].</p>
+        <p><strong>Смертоносный груз:</strong> Эти кристаллы видны на рюкзаке игрока. Если носитель погибает, кристалл падает на землю, позволяя врагу украсть его. Это превращает финальный круг в игру «захват флага» с высокими ставками[cite: 10].</p>
+        <p><strong>Рынок наград:</strong> Собранные кристаллы используются на «Рынке Чакры в конце сезона»[cite: 10]:</p>
+        <ul>
+            <li><strong>Магазин Желтой Чакры:</strong> Скины оружия в стиле Расенгана и особые плащи[cite: 10].</li>
+            <li><strong>Магазин Красной Чакры:</strong> Скины шлемов/рюкзаков в стиле Песчаного щита и следы движения песчаной бури[cite: 10].</li>
+        </ul>
+
+        <h3>5. ФИНАЛ СЕЗОНА: «ВЕЛИКОЕ СТОЛКНОВЕНИЕ»</h3>
+        <p>В последнюю неделю сезона в самом центре карты открывается «Поле битвы»[cite: 10].<br>
+        Все игроки по всему миру вносят свой вклад в общее количество кристаллов своей деревни, чтобы определить победителя[cite: 10].<br>
+        <strong>Финальная сцена:</strong> В конце сезона на экране лобби победивший зверь (Наруто или Гаара) подавляет побежденную сторону, озаряя небо лучом победы[cite: 10].</p>
+
+        <h3>6. ПСИХОЛОГИЯ ИГРОКА И БАЛАНС</h3>
+        <ul>
+            <li><strong>Почему выбор сложен?:</strong> Потому что награды за Желтую Чакру и Красную Чакру совершенно разные. Если игрок хочет получить и скины Наруто, и эффекты Гаары, он должен освоить обе стороны в течение сезона[cite: 10].</li>
+            <li><strong>Социальное взаимодействие:</strong> Масштабная анимация в лобби поощряет обсуждение стратегии перед матчем, например: «Друг, куда нам бросить клонов?» или «Когда нам активировать стену?»[cite: 10].</li>
+        </ul>
+    </div>
+
+    <div class="footer-note">
+        этот сценарий был отправлен в PUBG Mobile 26 мая.[cite: 9]
+    </div>
 </div>
 
 </body>
