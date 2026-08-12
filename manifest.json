@@ -12,7 +12,7 @@
   "description": "Akıllı ve samimi yapay zeka asistanı",
   "icons": [
     {
-      "src": "icon-512.png",
+      "src": "icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
