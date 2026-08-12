@@ -1,1 +1,0 @@
-# pubg-new-seasons
