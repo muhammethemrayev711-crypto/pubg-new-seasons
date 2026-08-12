@@ -1,0 +1,13 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "AI Assistant",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "AI Assistant",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "id": "com.aiassistant.app",
+  "description": "Akıllı ve samimi yapay zeka asistanı"
+}
