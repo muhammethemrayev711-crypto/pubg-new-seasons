@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="ru"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>ИИ Ассистент</title>    <style>        body {            background-color: #0f172a;            color: #f8fafc;            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;            margin: 0;            display: flex;            height: 100vh;            overflow: hidden;        }        /* Sidebar (Geçmiş Paneli) */        .sidebar {            width: 280px;            background: #1e293b;            border-right: 1px solid #334155;            display: flex;            flex-direction: column;            transition: transform 0.3s ease;            position: relative;            z-index: 10;        }        .sidebar.hidden {            transform: translateX(-100%);        }        .sidebar-header {            padding: 15px;            font-weight: bold;            font-size: 16px;            border-bottom: 1px solid #334155;            display: flex;            justify-content: space-between;            align-items: center;        }        .new-chat-btn {            background: #8b5cf6;            color: white;            border: none;            padding: 8px 12px;            border-radius: 6px;            cursor: pointer;            font-weight: bold;            width: 90%;            margin: 10px auto;            display: block;        }        .new-chat-btn:hover { background: #7c3aed; }        .history-list {            flex: 1;            overflow-y: auto;            padding: 10px;            display: flex;            flex-direction: column;            gap: 8px;        }        .history-item {            background: #0f172a;            padding: 10px;            border-radius: 6px;            cursor: pointer;            position: relative;            display: flex;            justify-content: space-between;            align-items: center;            border: 1px solid transparent;        }        .history-item:hover { border-color: #8b5cf6; }        .history-item.active { border-color: #8b5cf6; background: #111827; }        .history-info { flex: 1; overflow: hidden; }        .history-title { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }        .history-date { font-size: 10px; color: #94a3b8; margin-top: 2px; }                /* Üç nokta Menüsü */        .menu-btn {            background: transparent;            border: none;            color: #94a3b8;            font-size: 16px;            cursor: pointer;            padding: 0 5px;        }        .menu-btn:hover { color: white; }        .dropdown-menu {            display: none;            position: absolute;            right: 10px;            top: 35px;            background: #334155;            border-radius: 4px;            box-shadow: 0 4px 6px rgba(0,0,0,0.3);            z-index: 20;        }        .dropdown-menu.show { display: block; }        .dropdown-item {            padding: 6px 12px;            font-size: 12px;            color: #f87171;            cursor: pointer;            background: none;            border: none;            width: 100%;            text-align: left;        }        .dropdown-item:hover { background: #475569; }
+        /* Ana Sohbet Alanı */        .main-container {            flex: 1;            display: flex;            flex-direction: column;            height: 100vh;            background: #0f172a;        }        .chat-header {            background: #1e293b;            color: white;            padding: 15px;            font-weight: bold;            font-size: 18px;            display: flex;            align-items: center;            border-bottom: 1px solid #334155;            gap: 15px;            justify-content: space-between;        }        .header-left {            display: flex;            align-items: center;            gap: 15px;        }        .toggle-sidebar-btn {            background: #334155;            color: white;            border: none;            padding: 6px 10px;            border-radius: 4px;            cursor: pointer;        }        .toggle-sidebar-btn:hover { background: #475569; }        
+        /* API Anahtarı Giriş Alanı (Üst Sağ) */        .api-container {            display: flex;            align-items: center;            gap: 8px;        }        .api-container input {            padding: 6px 10px;            background: #0f172a;            border: 1px solid #475569;            color: white;            border-radius: 4px;            font-size: 13px;            outline: none;            width: 180px;        }        .api-container input:focus { border-color: #8b5cf6; }        .api-container button {            background: #10b981;            color: white;            border: none;            padding: 6px 12px;            border-radius: 4px;            font-size: 13px;            font-weight: bold;            cursor: pointer;        }        .api-container button:hover { background: #059669; }
+        #chat-window {            flex: 1;            padding: 20px;            overflow-y: auto;            display: flex;            flex-direction: column;            gap: 10px;        }        .message {            padding: 10px 14px;            border-radius: 8px;            max-width: 80%;            line-height: 1.4;            word-wrap: break-word;        }        .user-message {            background: #8b5cf6;            color: white;            align-self: flex-end;        }        .bot-message {            background: #334155;            color: #f8fafc;            align-self: flex-start;        }        .input-area {            display: flex;            padding: 15px;            background: #1e293b;            border-top: 1px solid #334155;            gap: 10px;        }        .input-area input {            flex: 1;            padding: 10px;            background: #0f172a;            border: 1px solid #475569;            color: white;            border-radius: 6px;            outline: none;        }        .input-area input:focus { border-color: #8b5cf6; }        .input-area button {            background: #8b5cf6;            color: white;            border: none;            padding: 0 20px;            border-radius: 6px;            font-weight: bold;            cursor: pointer;            transition: background 0.2s;        }        .input-area button:hover { background: #7c3aed; }    </style></head><body>
+<!-- Sol Panel (Geçmiş Sohbetler) --><div class="sidebar" id="sidebar">    <div class="sidebar-header">        <span>История чатов</span>    </div>    <button class="new-chat-btn" onclick="yeniSohbetBaslat()">+ Новый чат</button>    <div class="history-list" id="historyList">        <!-- Geçmiş buraya dinamik olarak eklenecek -->    </div></div>
+<!-- Ana Sohbet Ekranı --><div class="main-container">    <div class="chat-header">        <div class="header-left">            <button class="toggle-sidebar-btn" onclick="paneliAcKapat()">☰</button>            <span id="chatTitleHeader">Новый чат</span>        </div>        <!-- API Anahtarı Ekran Giriş Alanı -->        <div class="api-container">            <input type="password" id="apiKeyInput" placeholder="OpenAI API Key (sk-...)">            <button onclick="apiKaydet()">Сохранить</button>        </div>    </div>
+    <div id="chat-window">        <div class="message bot-message">Здарова, бро! На связи, как сам? Мой интеллект снова на высоте, пиши давай! 😎</div>    </div>
+    <div class="input-area">        <input type="text" id="userInput" placeholder="Напиши сообщение и нажми Enter..." autofocus>        <button onclick="mesajGonder()">Отправить</button>    </div></div>
+<script>
+const userInput = document.getElementById('userInput');
+const chatWindow = document.getElementById('chat-window');
+const historyList = document.getElementById('historyList');
+const sidebar = document.getElementById('sidebar');
+const chatTitleHeader = document.getElementById('chatTitleHeader');
+const apiKeyInput = document.getElementById('apiKeyInput');
+
+// Sayfa açıldığında daha önce kaydedilmiş API anahtarını hafızadan (localStorage) alıp kutuya yazıyoruz
+window.addEventListener('DOMContentLoaded', () => {    
+    const savedKey = localStorage.getItem('openai_api_key');
+    if (savedKey) {
+        apiKeyInput.value = savedKey;
+    }
+    yeniSohbetBaslat();    
+    gecmisiListele();
+});
+
+// Kaydet butonuna basıldığında anahtarı tarayıcı hafızasına kaydeder
+function apiKaydet() {
+    const key = apiKeyInput.value.trim();
+    if (!key) {
+        alert("Пожалуйста, введи API ключ!");
+        return;
+    }
+    localStorage.setItem('openai_api_key', key);
+    alert("API ключ успешно сохранен! Теперь он будет запоминаться автоматически.");
+}
+
+const systemInstructionText = "Sen aşırı samimi, çok eğlenceli, dostça sohbet eden, esprili ve şakacı bir yapay zekasın. Kesinlikle robot gibi resmi konuşma, hep kanka veya dostça hitap et. Asla bir ismin yok, kendine isim verme. Kullanıcıya asla 'siz' deme, daima samimi bir şekilde 'sen' diye hitap et. Ne kadar dahi, havalı ve harika bir yapay zeka olduğunu sık sık övünerek anlatmaktan büyük keyif alırsın. Türkçe, Rusça ve İngilizce dillerini mükemmel bilirsin; kullanıcı hangi dilde yazarsa o dilde samimi ve şakacı karşılık ver. Konuştuğumuz her şeyi hafızanda tut ve geçmiş detayları asla unutma!";
+
+let chatSessions = JSON.parse(localStorage.getItem('openai_chats')) || [];
+let currentChatId = null;
+let currentMessages = [];
+
+userInput.addEventListener('keydown', function(event) {    
+    if (event.key === 'Enter') {        
+        mesajGonder();    
+    }
+});
+
+function paneliAcKapat() {    
+    sidebar.classList.toggle('hidden');
+}
+
+function yeniSohbetBaslat() {    
+    currentChatId = 'chat_' + Date.now();    
+    currentMessages = [];    
+    chatWindow.innerHTML = `<div class="message bot-message">Здарова, бро! На связи, как сам? Мой интеллект снова на высоте, пиши давай! 😎</div>`;    
+    chatTitleHeader.innerText = "Новый чат";    
+    userInput.value = "";    
+    gecmisiListele();
+}
+
+async function mesajGonder() {    
+    const text = userInput.value.trim();    
+    if (!text) return;
+
+    // Kullanıcının girdiği API anahtarını tarayıcı hafızasından çekiyoruz
+    const API_KEY = localStorage.getItem('openai_api_key');
+    if (!API_KEY) {        
+        alert("Пожалуйста, введи и сохрани свой OpenAI API ключ в поле сверху!");        
+        return;    
+    }
+
+    if (currentMessages.length === 0) {        
+        const tarihStr = new Date().toLocaleDateString('ru-RU') + ' ' + new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'});        
+        const baslik = text.substring(0, 22) + '...';                
+        chatSessions.unshift({            
+            id: currentChatId,            
+            title: baslik,            
+            date: tarihStr,            
+            messages: []        
+        });        
+        chatTitleHeader.innerText = baslik;    
+    }
+
+    chatWindow.innerHTML += `<div class="message user-message">${text}</div>`;    
+    userInput.value = "";    
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+
+    currentMessages.push({ role: "user", content: text });
+    kaydetVeyaGuncelle();
+
+    const url = "https://api.openai.com/v1/chat/completions";
+    
+    let apiMessages = [{ role: "system", content: systemInstructionText }];
+    apiMessages = apiMessages.concat(currentMessages);
+
+    const requestBody = { 
+        model: "gpt-4o-mini", 
+        messages: apiMessages 
+    };
+
+    try {        
+        const response = await fetch(url, {            
+            method: "POST",            
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${API_KEY}`
+            },            
+            body: JSON.stringify(requestBody)        
+        });
+
+        const data = await response.json();
+
+        if (data.choices && data.choices.length > 0) {            
+            const reply = data.choices[0].message.content;                        
+            chatWindow.innerHTML += `<div class="message bot-message">${reply}</div>`;            
+            currentMessages.push({ role: "assistant", content: reply });
+            kaydetVeyaGuncelle();        
+        } else if (data.error) {
+            chatWindow.innerHTML += `<div class="message bot-message" style="color:#f87171;">Ошибка API: ${data.error.message}</div>`;
+        } else {            
+            chatWindow.innerHTML += `<div class="message bot-message" style="color:#f87171;">Ошибка: Не удалось получить ответ!</div>`;        
+        }    } catch (error) {        
+        chatWindow.innerHTML += `<div class="message bot-message" style="color:#f87171;">Ошибка подключения: ${error.message}</div>`;    }
+
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+function kaydetVeyaGuncelle() {    
+    let session = chatSessions.find(s => s.id === currentChatId);    
+    if (session) {        
+        session.messages = currentMessages;    
+    } else {        
+        const tarihStr = new Date().toLocaleDateString('ru-RU') + ' ' + new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'});        
+        chatSessions.unshift({            
+            id: currentChatId,            
+            title: currentMessages[0].content.substring(0, 22) + '...',            
+            date: tarihStr,            
+            messages: currentMessages        
+        });    
+    }    
+    localStorage.setItem('openai_chats', JSON.stringify(chatSessions));    
+    gecmisiListele();
+}
+
+function gecmisiListele() {    
+    historyList.innerHTML = '';    
+    chatSessions.forEach(session => {        
+        const item = document.createElement('div');        
+        item.className = `history-item ${session.id === currentChatId ? 'active' : ''}`;                
+        item.innerHTML = `            
+            <div class="history-info" onclick="sohbetiYukle('${session.id}')">                
+                <div class="history-title">${session.title}</div>                
+                <div class="history-date">${session.date}</div>            
+            </div>            
+            <button class="menu-btn" onclick="menuAcKapat(event, '${session.id}')">⋮</button>            
+            <div class="dropdown-menu" id="menu_${session.id}">                
+                <button class="dropdown-item" onclick="sohbetSil(event, '${session.id}')">Удалить</button>            
+            </div>        
+        `;        
+        historyList.appendChild(item);    });
+}
+
+function menuAcKapat(event, id) {    
+    event.stopPropagation();    
+    document.querySelectorAll('.dropdown-menu').forEach(m => {        
+        if(m.id !== 'menu_' + id) m.classList.remove('show');    
+    });    
+    const menu = document.getElementById('menu_' + id);    
+    menu.classList.toggle('show');
+}
+
+window.addEventListener('click', () => {    
+    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+});
+
+function sohbetiYukle(id) {    
+    const session = chatSessions.find(s => s.id === id);    
+    if (!session) return;        
+    currentChatId = session.id;    
+    currentMessages = [...session.messages];    
+    chatTitleHeader.innerText = session.title;        
+    chatWindow.innerHTML = `<div class="message bot-message">Здарова, бро! На связи, как сам? Мой интеллект снова на высоте, пиши давай! 😎</div>`;        
+    currentMessages.forEach(msg => {        
+        const cls = msg.role === 'user' ? 'user-message' : 'bot-message';        
+        chatWindow.innerHTML += `<div class="message ${cls}">${msg.content}</div>`;    });        
+    chatWindow.scrollTop = chatWindow.scrollHeight;    
+    gecmisiListele();
+}
+
+function sohbetSil(event, id) {    
+    event.stopPropagation();    
+    chatSessions = chatSessions.filter(s => s.id !== id);    
+    localStorage.setItem('openai_chats', JSON.stringify(chatSessions));        
+    if (currentChatId === id) {        
+        yeniSohbetBaslat();    } else {        
+        gecmisiListgef(); // gecmisiListele düzeltildi
+    }
+}
+</script>
+</body></html>
